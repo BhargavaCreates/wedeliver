@@ -2,6 +2,12 @@
     <div id="login">
        <div class="container is-widescreen">
             <div class="notification">
+                <template v-if="authenticated">
+                    <div class="notification is-primary is-light">
+                    <button class="delete"></button>
+                    User Successfully Authenticated ! 
+                </div>
+                </template>
                 <h1 class="title is-1">We Deliver Order Management System</h1>
                 <h2 class="subtitle is-2">LOGIN</h2>
                 <form @submit="submit" method="post">
@@ -17,6 +23,7 @@
                     <br>
                     <button type="submit" class="button is-primary">Sign In</button>
                 </form>
+                <br>
             </div>
         </div>
     </div>
