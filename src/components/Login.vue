@@ -17,11 +17,6 @@
                     <br>
                     <button type="submit" class="button is-primary">Sign In</button>
                 </form>
-                <br>
-                <template v-if="authenticated">
-                    {{ user }}  
-                    <div><h1 class="title is-1">This is very sensitive information</h1></div>
-                </template>
             </div>
         </div>
     </div>
