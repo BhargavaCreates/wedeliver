@@ -4,8 +4,12 @@
             <div class="notification">
                 <template v-if="authenticated">
                     <div class="notification is-primary is-light">
-                    <button class="delete"></button>
                     User Successfully Authenticated ! 
+                </div>
+                </template>
+                <template v-if="authStatus === 401">
+                    <div class="notification is-danger is-light">
+                    Please Check Email and Password! 
                 </div>
                 </template>
                 <h1 class="title is-1">We Deliver Order Management System</h1>
@@ -51,7 +55,8 @@ Vue.use(VueAxios, axios)
         computed:{
             ...mapGetters({
                 authenticated: 'auth/authenticated',
-                user: 'auth/user'
+                user: 'auth/user',
+                authStatus: 'auth/authStatus'
             })
         },
         methods:{
