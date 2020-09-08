@@ -23,9 +23,10 @@
                         <input v-model="form.password" class="input form" type="password" placeholder="Password">
                     </div>
                     <br>
-                    <button type="submit" class="button is-primary">Sign In</button>
+                    <button type="submit" class="button is-primary" >Sign In</button>
                 </form>
                 <br>
+                <progress class="progress is-small is-primary" max="100" v-if="this.isLoading">15%</progress>
             </div>
         </div>
     </div>
@@ -48,7 +49,8 @@ Vue.use(VueAxios, axios)
                 form:{
                     email:null,
                     password:null
-                }
+                },
+                isLoading: false
             }
         },
         computed:{
@@ -66,13 +68,15 @@ Vue.use(VueAxios, axios)
             {
                 this.logIn(this.form)
                 e.preventDefault()
+                this.isLoading = true
             }
         },
         watch: {
-        authenticated: function() {
-        this.$router.push('/');
-    }
-  }
+            authenticated: function() {
+                this.isLoading = false
+                this.$router.push('/');
+            }
+        }
     }
     
 </script>
