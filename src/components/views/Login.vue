@@ -17,12 +17,10 @@
                 <form @submit="submit" method="post">
                     <div class="form-group">
                         <input v-model="form.email" class="input form" placeholder="Email">
-                        <p>{{ email }}</p>
                     </div>
                     <br>
                     <div class="form-group">
                         <input v-model="form.password" class="input form" type="password" placeholder="Password">
-                        <p>{{ password }}</p>
                     </div>
                     <br>
                     <button type="submit" class="button is-primary">Sign In</button>
@@ -69,7 +67,12 @@ Vue.use(VueAxios, axios)
                 this.logIn(this.form)
                 e.preventDefault()
             }
-        }
+        },
+        watch: {
+        authenticated: function() {
+        this.$router.push('/');
+    }
+  }
     }
     
 </script>

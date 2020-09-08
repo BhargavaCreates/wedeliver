@@ -12,9 +12,7 @@ const routes = [
       name: 'Order',
       component: Order,
       beforeEnter: (to, from, next) => {
-        console.log(store.state.auth.isAuthenticated);
-        
-        const isAuthenticated = store.getters['auth/authentication']
+        const isAuthenticated = store.getters['auth/authenticated']
         if (to.name !== "Login" && !isAuthenticated){
           return next({ name: 'Login' })  
         }

@@ -42,8 +42,7 @@ export default {
                 console.log(response.status)
                 commit('SET_TOKEN', response.data.access_token)
                 commit('SET_USER', creds)
-                commit('SET_AUTH_STATUS',response.status),
-                this.$router.push({path: '/'})
+                commit('SET_AUTH_STATUS',response.status)
             } catch (error) {
                 console.log(error.response.status)
                 commit('SET_AUTH_STATUS',error.response.status)
