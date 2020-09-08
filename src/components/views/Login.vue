@@ -25,7 +25,7 @@
                         <p>{{ password }}</p>
                     </div>
                     <br>
-                    <button type="submit" class="button is-primary">Sign In</button>
+                    <button type="submit" class="button is-primary" v-on:click="redirectHome">Sign In</button>
                 </form>
                 <br>
             </div>
@@ -40,6 +40,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
+import { router } from '../../router/index.js';
  
 Vue.use(VueAxios, axios)
     export default {
@@ -66,8 +67,12 @@ Vue.use(VueAxios, axios)
         submit(e)
             {
                 this.logIn(this.form)
-                e.preventDefault();
-            }
+                e.preventDefault()
+            },
+        redirectHome(){
+            console.log("button pressed!!")
+            router.push('/')
+        }
         }
     }
     

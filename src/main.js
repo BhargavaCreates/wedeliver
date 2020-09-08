@@ -1,38 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './../node_modules/bulma/css/bulma.css';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import VueRouter from 'vue-router'
-import Login from "../src/components/Login.vue"
-import Order from "../src/components/Order.vue"
 import store from './store/index.js'
+import axios from 'axios'
+import router from './router'
 
+require('@/store/subscriber')
 
-
-Vue.use(VueRouter)
-
-const routes = [
-  {
-    path:"/",
-    component:Login
-  },
-  {
-    path:"/order",
-    component:Order
-  }
-]
-
-const router = new VueRouter({
-  routes: routes,
-  mode:'history'
-})
+axios.defaults.baseURL = 'https://cors-anywhere.herokuapp.com/https://we-deliver.herokuapp.com/api/v1';
 
 Vue.config.productionTip = false
-
-Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
   render: h => h(App),
   store,
-  router: router
+  router,
 }).$mount('#app')

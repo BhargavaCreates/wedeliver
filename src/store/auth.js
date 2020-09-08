@@ -22,7 +22,7 @@ export default {
             state.token = token
         },
         SET_USER(state,user){
-            state.user = user.email
+            state.user = user
         },
         SET_AUTH_STATUS(state, authStatus){
             state.authStatus = authStatus
@@ -30,10 +30,12 @@ export default {
     },  
     actions:{
         async logIn ({ commit },creds) { //creds for credentials // dispatch or commit 
-            const proxy = "https://cors-anywhere.herokuapp.com/"
-            var url = `https://we-deliver.herokuapp.com/api/v1/admin/login?id=${creds.email}&password=${creds.password}`
+            //const proxy = "https://cors-anywhere.herokuapp.com/"
+            //var url = `https://we-deliver.herokuapp.com/api/v1/admin/login?id=${creds.email}&password=${creds.password}`
+            var url = `/admin/login?id=${creds.email}&password=${creds.password}` //axios.baseURL set in main.js file 
             try {
-                let response = await axios.post(proxy+url,creds)
+                //let response = await axios.post(proxy+url,creds)
+                let response = await axios.post(url,creds)
                 console.log(response.status)
                 commit('SET_TOKEN', response.data.access_token)
                 commit('SET_USER', creds)

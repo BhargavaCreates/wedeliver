@@ -1,12 +1,14 @@
 <template>
   <div id="app">
+ 
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Login from './components/Login.vue'
-import Order from './components/Order.vue'
+import Login from './components/views/Login.vue'
+import Order from './components/views/Order.vue'
+//import Header from './components/Header.vue'
 
 
 export default {
@@ -15,7 +17,8 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     Login,
     // eslint-disable-next-line vue/no-unused-components
-    Order
+    Order,
+
   }
 }
 </script>
