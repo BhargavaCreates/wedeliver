@@ -26,6 +26,9 @@ export default {
         },
         SET_AUTH_STATUS(state, authStatus){
             state.authStatus = authStatus
+        },
+        SET_IS_AUTHENTICATED(state){
+            state.isAuthenticated = true
         }
     },  
     actions:{
@@ -39,7 +42,8 @@ export default {
                 console.log(response.status)
                 commit('SET_TOKEN', response.data.access_token)
                 commit('SET_USER', creds)
-                commit('SET_AUTH_STATUS',response.status)
+                commit('SET_AUTH_STATUS',response.status),
+                this.$router.push({path: '/'})
             } catch (error) {
                 console.log(error.response.status)
                 commit('SET_AUTH_STATUS',error.response.status)

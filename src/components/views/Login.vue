@@ -25,7 +25,7 @@
                         <p>{{ password }}</p>
                     </div>
                     <br>
-                    <button type="submit" class="button is-primary" v-on:click="redirectHome">Sign In</button>
+                    <button type="submit" class="button is-primary">Sign In</button>
                 </form>
                 <br>
             </div>
@@ -68,11 +68,7 @@ Vue.use(VueAxios, axios)
             {
                 this.logIn(this.form)
                 e.preventDefault()
-            },
-        redirectHome(){
-            console.log("button pressed!!")
-            this.$router.push('/')
-        }
+            }
         }
     }
     
