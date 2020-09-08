@@ -40,7 +40,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
-import { router } from '../../router/index.js';
+
  
 Vue.use(VueAxios, axios)
     export default {
@@ -71,7 +71,7 @@ Vue.use(VueAxios, axios)
             },
         redirectHome(){
             console.log("button pressed!!")
-            router.push('/')
+            this.$router.push('/')
         }
         }
     }
