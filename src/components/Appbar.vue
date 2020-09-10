@@ -1,12 +1,12 @@
 <template>
-    <div class="sticky">
+    <div>
         <section class="hero is-warning center">
-            <div class="hero-body">
+            <!-- <div class="hero-body"> -->
                 <div class="container">
                 <h1 class="title center">
                     Order History
                 </h1>
-                </div>
+                <!-- </div> -->
             </div>
         </section>
     </div>
@@ -28,9 +28,8 @@
         border-bottom-right-radius: 15px;
         block-size: 75px;
     }
-    /* .sticky {
-        position: -webkit-sticky; /* Safari */
-        /* position: sticky;
-        top: 0;
-    } */
+    .hero.is-warning .title {
+    color: rgba(0, 0, 0, 0.7);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    }
 </style>

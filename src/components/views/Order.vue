@@ -3,16 +3,30 @@
         <section class="section" >
             <Appbar class="header"/>
         </section>
+        <section id="nav" >
+                <div class="hero-foot">
+                    <nav class="tabs is-boxed is-fullwidth">
+                    <div class="container">
+                        <ul>
+                        <li class="is-active">
+                            <router-link to="/">Today</router-link>
+                            <!-- <a>Today</a> -->
+                        </li>
+                        <li>
+                            <router-link to="/tommorow">Tommorow</router-link>
+                        </li>
+                        </ul>
+                    </div>
+                    </nav>
+                </div>
+        </section>
         <section class="section">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <div class="orders">
+               <div v-for="order in todayOrders" :key="order.id" class="order">
+                   {{ order }}
+               </div>
+            </div>
+            <Card date="25"/>
         </section>
        
     </div>
@@ -44,5 +58,8 @@ import Card from '../Card'
     }
     section{
         padding: 1.5rem 1.5rem;
+    }
+    #nav{
+        margin-top: 1rem;
     }
 </style>

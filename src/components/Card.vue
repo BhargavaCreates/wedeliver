@@ -16,7 +16,7 @@
                       storeAddress
                     </p>
                     <p class="card-header-subtitle" id="date">
-                    <time datetime="2016-1-1">Tue, 25 Jan</time>
+                    <time datetime="2016-1-1">Tue, {{date}} Jan</time>
                     </p>
                   </header>
                   <div class="card-content">
@@ -29,7 +29,7 @@
                     <p class="card-footer-item"><b>Total: ₹475</b></p>
                     <p class="card-footer-item"><b>userAddress</b></p>
                     <div class="columns card-footer-item">
-                      <!-- <div class="column">
+                      <!-- <div class="row">
                         <b>Order Status: </b>
                       </div> -->
                       <div class="row" id="order-status" @change="orderStatus($event)">
@@ -41,14 +41,6 @@
                         </select>
                       </div>
                     </div>
-                    <!-- <p class="card-footer-item"><b>orderStatus: <div class="select card-footer-item">
-                      <select>
-                        <option>Pending</option>
-                        <option>Processing</option>
-                        <option>On its way</option>
-                        <option>Delivered</option>
-                      </select>
-                    </div></b></p> -->
                   </footer>
                 </div>
               </div>
@@ -63,6 +55,7 @@
 <script>
   export default {
     name: 'Card',
+    props:['date'],
     methods: {
       orderStatus(event){
         console.log(event.target.value)
