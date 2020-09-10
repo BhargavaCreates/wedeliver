@@ -16,7 +16,7 @@
                       storeAddress
                     </p>
                     <p class="card-header-subtitle" id="date">
-                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    <time datetime="2016-1-1">Tue, 25 Jan</time>
                     </p>
                   </header>
                   <div class="card-content">
@@ -29,10 +29,10 @@
                     <p class="card-footer-item"><b>Total: ₹475</b></p>
                     <p class="card-footer-item"><b>userAddress</b></p>
                     <div class="columns card-footer-item">
-                      <div class="column">
+                      <!-- <div class="column">
                         <b>Order Status: </b>
-                      </div>
-                      <div class="column" id="order-status" @change="orderStatus($event)">
+                      </div> -->
+                      <div class="row" id="order-status" @change="orderStatus($event)">
                         <select name="order-status">
                           <option value="Pending">Pending</option>
                           <option value="Processing">Processing</option>
@@ -84,6 +84,9 @@
   }
   section:hover {
     transform: scale(1.02);
+  }
+  #order-status{
+    justify-content: center;
   }
   
 </style>

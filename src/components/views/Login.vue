@@ -70,7 +70,6 @@ Vue.use(VueAxios, axios)
             {
                 this.logIn(this.form)
                 e.preventDefault()
-                console.log(this.isLoading)
             }
         },
         watch: {

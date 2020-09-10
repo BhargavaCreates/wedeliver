@@ -28,9 +28,9 @@
         border-bottom-right-radius: 15px;
         block-size: 75px;
     }
-    .sticky {
+    /* .sticky {
         position: -webkit-sticky; /* Safari */
-        position: sticky;
+        /* position: sticky;
         top: 0;
-    }
+    } */
 </style>
