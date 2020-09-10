@@ -16,7 +16,7 @@
                       storeAddress
                     </p>
                     <p class="card-header-subtitle" id="date">
-                    <time datetime="2016-1-1">Tue, 25 Jan</time>
+                    <time datetime="2016-1-1">25 Jan</time>
                     </p>
                   </header>
                   <div class="card-content">
