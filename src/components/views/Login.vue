@@ -2,11 +2,10 @@
     <div id="login">
        <div class="">
             <div class="container my-3">
-                <template v-if="authStatus === 200 && this.delete_notification != true">
+                <template v-if="authStatus === 200">
                     <div class="notification is-primary is-light">
-                        <button class="delete" @click="delete_notification"></button>
                         User Successfully Authenticated ! 
-                </div>
+                    </div>
                 </template>
                 <template v-if="authStatus === 401">
                     <div class="notification is-danger is-light">
@@ -28,7 +27,7 @@
                     <button type="submit" class="button is-primary" >Sign In</button>
                 </form>
                 <br>
-                <progress class="progress is-small is-primary" max="100" v-if="this.isLoading">15%</progress>
+                <progress class="progress is-small is-primary" max="100" v-if="isLoading">15%</progress>
             </div>
         </div>
     </div>
@@ -52,7 +51,6 @@ Vue.use(VueAxios, axios)
                     email:null,
                     password:null
                 },
-                isLoading: false,
                 delete_notication: false,
             }
         },
@@ -60,7 +58,8 @@ Vue.use(VueAxios, axios)
             ...mapGetters({
                 authenticated: 'auth/authenticated',
                 user: 'auth/user',
-                authStatus: 'auth/authStatus'
+                authStatus: 'auth/authStatus',
+                isLoading: 'auth/isLoading'
             })
         },
         methods:{
@@ -71,17 +70,13 @@ Vue.use(VueAxios, axios)
             {
                 this.logIn(this.form)
                 e.preventDefault()
-                this.isLoading = true
+                console.log(this.isLoading)
             }
         },
         watch: {
             authenticated: function() {
-                this.isLoading = false
                 this.$router.push('/');
             }
-        },
-        delete_notication(){
-            this.delete_notication = true
         }
     }
     

@@ -4,7 +4,8 @@ export default {
     state:{
         token: null,
         user: null,
-        authStatus: null
+        authStatus: null,
+        isLoading: false
     },
     getters:{
         authenticated(state){
@@ -15,6 +16,9 @@ export default {
         },
         authStatus(state){
             return state.authStatus
+        },
+        isLoading(state){
+            return state.isLoading
         }
     }, 
     mutations:{
@@ -29,6 +33,9 @@ export default {
         },
         SET_IS_AUTHENTICATED(state){
             state.isAuthenticated = true
+        },
+        SET_IS_LOADING(state, isLoading){
+            state.isLoading = isLoading
         }
     },  
     actions:{
@@ -37,17 +44,21 @@ export default {
             //var url = `https://we-deliver.herokuapp.com/api/v1/admin/login?id=${creds.email}&password=${creds.password}`
             var url = `/admin/login?id=${creds.email}&password=${creds.password}` //axios.baseURL set in main.js file 
             try {
+                commit('SET_IS_LOADING',true)
                 //let response = await axios.post(proxy+url,creds)
                 let response = await axios.post(url,creds)
                 console.log(response.status)
                 commit('SET_TOKEN', response.data.access_token)
                 commit('SET_USER', creds)
                 commit('SET_AUTH_STATUS',response.status)
+                commit('SET_IS_LOADING',false)
             } catch (error) {
+                commit('SET_IS_LOADING',true)
                 console.log(error.response.status)
                 commit('SET_AUTH_STATUS',error.response.status)
                 commit('SET_TOKEN', null)
                 commit('SET_USER', null)
+                commit('SET_IS_LOADING',false)
             }
         }
     }
