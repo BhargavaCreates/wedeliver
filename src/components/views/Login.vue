@@ -1,10 +1,11 @@
 <template>
     <div id="login">
-       <div class="container is-widescreen">
-            <div class="notification">
-                <template v-if="authenticated">
+       <div class="">
+            <div class="container my-3">
+                <template v-if="authStatus === 200 && this.delete_notification != true">
                     <div class="notification is-primary is-light">
-                    User Successfully Authenticated ! 
+                        <button class="delete" @click="delete_notification"></button>
+                        User Successfully Authenticated ! 
                 </div>
                 </template>
                 <template v-if="authStatus === 401">
@@ -12,11 +13,12 @@
                     Please Check Email and Password! 
                 </div>
                 </template>
-                <h1 class="title is-1">We Deliver Order Management System</h1>
-                <h2 class="subtitle is-2">LOGIN</h2>
+                <h1 class="title">We Deliver Order Management System</h1>
+                <h2 class="title">LOGIN</h2>
+                <br>
                 <form @submit="submit" method="post">
                     <div class="form-group">
-                        <input v-model="form.email" class="input form" placeholder="Email">
+                        <input v-model="form.email" class="input form" placeholder="Email" required>
                     </div>
                     <br>
                     <div class="form-group">
@@ -50,7 +52,8 @@ Vue.use(VueAxios, axios)
                     email:null,
                     password:null
                 },
-                isLoading: false
+                isLoading: false,
+                delete_notication: false,
             }
         },
         computed:{
@@ -76,6 +79,9 @@ Vue.use(VueAxios, axios)
                 this.isLoading = false
                 this.$router.push('/');
             }
+        },
+        delete_notication(){
+            this.delete_notication = true
         }
     }
     
@@ -84,10 +90,13 @@ Vue.use(VueAxios, axios)
 <style lang="css" scoped>
     #login {
         text-align: center;
-        color: #2c3e50;
+        color:aliceblue;
         margin-top: 60px;
     }
     .form {
         width: 50%;
+    }
+    *{
+        color:rgb(21, 50, 88);
     }
 </style>
