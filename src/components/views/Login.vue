@@ -2,7 +2,8 @@
     <div id="login">
        <div class="">
             <div class="container my-3">
-                <template v-if="authStatus === 200">
+                <!-- Notification -->
+                <template v-if="authStatus === 200 && loggedOut === false">
                     <div class="notification is-primary is-light">
                         User Successfully Authenticated ! 
                     </div>
@@ -10,6 +11,11 @@
                 <template v-if="authStatus === 401">
                     <div class="notification is-danger is-light">
                     Please Check Email and Password! 
+                </div>
+                </template>
+                <template v-if="loggedOut">
+                    <div class="notification is-danger is-light">
+                    Successfully Logged Out!
                 </div>
                 </template>
                 <h1 class="title">We Deliver Order Management System</h1>
@@ -59,7 +65,8 @@ Vue.use(VueAxios, axios)
                 authenticated: 'auth/authenticated',
                 user: 'auth/user',
                 authStatus: 'auth/authStatus',
-                isLoading: 'auth/isLoading'
+                isLoading: 'auth/isLoading',
+                loggedOut: 'auth/loggedOut'
             })
         },
         methods:{

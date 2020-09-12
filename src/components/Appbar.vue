@@ -1,35 +1,67 @@
 <template>
     <div>
         <section class="hero is-warning center">
-            <!-- <div class="hero-body"> -->
-                <div class="container">
+            <div class="hero-body">
+            <div class="container">
                 <h1 class="title center">
-                    Order History
+                    <div>
+                        Order History
+                    </div>
+                    <div>
+                        <button class="button" @click="logout">Log Out</button>
+                    </div>
                 </h1>
-                <!-- </div> -->
+                </div>
             </div>
         </section>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
+
     export default {
-        name: "Appbar"
+        name: "Appbar",
+        methods:{
+            logout(){
+                localStorage.removeItem('token')
+                this.loggedOutAction()
+                this.setTokenNull(null) // setting token null
+                this.$router.push('/login') 
+                },
+            ...mapActions({
+                loggedOutAction: 'auth/loggedOut',
+                setTokenNull: 'auth/setTokenNull' //action for commiting token to null
+            })
+            
+        },
+        computed: {
+            ...mapGetters({
+                loggedOut: 'auth/loggedOut'
+            })
+        }
     }
 </script>
 
 <style scoped>
     .center{
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .hero{
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
         block-size: 75px;
     }
+    .hero-body{
+        padding: 0rem 1.5rem;
+    }
     .hero.is-warning .title {
     color: rgba(0, 0, 0, 0.7);
     padding: 1rem 1.5rem 1rem 1.5rem;
+    }
+    h1.title.center{
+        justify-content: space-between;
     }
 </style>

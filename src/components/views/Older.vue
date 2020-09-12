@@ -7,13 +7,13 @@
             <nav class="tabs is-boxed is-fullwidth">
                 <div class="container">
                     <ul>
-                        <li class="is-active">
+                        <li>
                             <router-link to="/">Today</router-link>
                         </li>
                         <li>
                             <router-link to="/tommorow">Tommorow</router-link>
                         </li>
-                        <li>
+                        <li class="is-active">
                             <router-link to="/older">Older</router-link>
                         </li>
                     </ul>
@@ -21,12 +21,8 @@
             </nav>
         </section>
         <section class="section">
-            <div class="orders">
-               <!-- <div v-for="order in todayOrders" :key="order.id" class="order">
-                   {{ order }}
-               </div> -->
-            </div>
-            <Card date="25"/>
+            <Card date="26"/>
+            <Card date="26"/>
         </section>
        
     </div>
@@ -36,9 +32,8 @@
 import Appbar from '../Appbar'
 import Card from '../Card'
 
-
     export default {
-        name: 'Order',
+        name: 'OrderTom',
         components: {
             Appbar,
             Card
@@ -58,9 +53,9 @@ import Card from '../Card'
     height:80px;     /* define height for content */
     }
     section{
-        padding: 1rem 1.5rem;
+        padding: 1.5rem 1.5rem;
     }
     #nav{
-        margin-top: 2.5rem;
+        margin-top: 1rem;
     }
 </style>

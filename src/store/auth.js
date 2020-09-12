@@ -6,11 +6,11 @@ export default {
         user: null,
         authStatus: null,
         isLoading: false,
+        loggedOut: false
     },
     getters: {
         authenticated(state) {
             return (state.token && state.user) != null
-            
         },
         user(state) {
             return state.user;
@@ -21,6 +21,9 @@ export default {
         isLoading(state) {
             return state.isLoading;
         },
+        loggedOut(state){
+            return state.loggedOut
+        }
     },
     mutations: {
         SET_TOKEN(state, token) {
@@ -38,6 +41,9 @@ export default {
         SET_IS_LOADING(state, isLoading) {
             state.isLoading = isLoading;
         },
+        SET_LOGGED_OUT(state) {
+            state.loggedOut = true;
+        }
     },
     actions: {
         async logIn({commit}, creds) {
@@ -62,5 +68,11 @@ export default {
                 commit("SET_IS_LOADING", false);
             }
         },
+        loggedOut({commit}){
+            commit('SET_LOGGED_OUT')
+        },
+        setTokenNull({commit},setTokenNull){
+            commit('SET_TOKEN',setTokenNull)
+        }
     },
 };

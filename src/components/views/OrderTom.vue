@@ -4,20 +4,21 @@
             <Appbar class="header"/>
         </section>
         <section id="nav" >
-                <div class="hero-foot">
-                    <nav class="tabs is-boxed is-fullwidth">
-                    <div class="container">
-                        <ul>
+            <nav class="tabs is-boxed is-fullwidth">
+                <div class="container">
+                    <ul>
                         <li>
                             <router-link to="/">Today</router-link>
                         </li>
                         <li class="is-active">
-                            <a>Tommorow</a>
+                            <router-link to="/tommorow">Tommorow</router-link>
                         </li>
-                        </ul>
-                    </div>
-                    </nav>
+                        <li>
+                            <router-link to="/older">Older</router-link>
+                        </li>
+                    </ul>
                 </div>
+            </nav>
         </section>
         <section class="section">
             <Card date="26"/>
@@ -53,7 +54,7 @@ import Card from '../Card'
     top:0;            /* top left corner should start at topmost spot */
     width:100vw;      /* take up the full browser width */
     z-index:100;  /* high z index so other content scrolls underneath */
-    height:100px;     /* define height for content */
+    height:80px;     /* define height for content */
     }
     section{
         padding: 1.5rem 1.5rem;

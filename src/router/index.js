@@ -1,25 +1,20 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Order from '../components/views/Order.vue'
 import Login from '../components/views/Login.vue'
 import OrderTom from '../components/views/OrderTom.vue'
+import Older from '../components/views/Older.vue'
 import store from "@/store"
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
+const router = new Router({
+  mode:'history',
+  routes: [
     {
       path:"/",
       name: 'Order',
       component: Order,
-      beforeEnter: (to, from, next) => {
-        const isAuthenticated = store.getters['auth/authenticated']
-        if (to.name !== "Login" && !isAuthenticated){
-          return next({ name: 'Login' })  
-        }
-        else next()
-      }
-      
     },
     {
       path:"/login",
@@ -30,13 +25,22 @@ const routes = [
       path:'/tommorow',
       name:'Tommorow',
       component: OrderTom
+    },
+    {
+      path:'/older',
+      name:'Older',
+      component: Older
     }
   ]
-  
-  const router = new VueRouter({
-    routes: routes,
-    mode:'history'
-  })
+})
 
+router.beforeEach((to, from, next) => {
+   const isAuthenticated = store.getters['auth/authenticated']
+  // const isAuthenticated = localStorage.getItem('token');
+  if (to.name !== "Login" && !isAuthenticated){
+    return next({ name: 'Login' })  
+  }
+  else next()
+});
 
   export default router

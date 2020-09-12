@@ -9,7 +9,7 @@ store.subscribe((mutation) => {
             if (mutation.payload){
                 axios.defaults.headers.common['Authorization'] = `Bearer ${mutation.payload}`
                 console.log(axios.defaults.headers.common['Authorization'])
-                // store token local storage
+                // store token & user in local storage
                 localStorage.setItem('token',mutation.payload)
             } else {
                 axios.defaults.headers.common['Authorization'] = null

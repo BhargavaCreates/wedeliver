@@ -13,7 +13,7 @@
                     <a href="#">userName</a>
                     </p>
                     <p class="card-header-title">
-                      storeAddress
+                      storeName
                     </p>
                     <p class="card-header-subtitle" id="date">
                     <time datetime="2016-1-1">Tue, {{date}} Jan</time>
@@ -21,13 +21,13 @@
                   </header>
                   <div class="card-content">
                     <div class="content">
-                      Product Details
+                      orderID
                       <br>
                     </div>
                   </div>
                   <footer class="card-footer">
                     <p class="card-footer-item"><b>Total: ₹475</b></p>
-                    <p class="card-footer-item"><b>userAddress</b></p>
+                    <p class="card-footer-item"><b>userPhoneNo</b></p>
                     <div class="columns card-footer-item">
                       <!-- <div class="row">
                         <b>Order Status: </b>
@@ -73,7 +73,7 @@
     display: flex;
   }
   section{
-    padding: 0.7rem 1.5rem;
+    padding: 0rem 1.5rem;
   }
   section:hover {
     transform: scale(1.02);
