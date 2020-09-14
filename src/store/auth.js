@@ -9,9 +9,8 @@ export default {
     loggedOut: false,
   },
   getters: {
-    authenticated() {
-      //return (state.token && state.user) != null
-      return true;
+    authenticated(state) {
+      return (state.token && state.user) != null;
     },
     user(state) {
       return state.user;
