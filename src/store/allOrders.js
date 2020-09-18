@@ -36,7 +36,7 @@ export default {
       catch(error){
         if(error.response.status == 401){
           alert("Authorization Token Expired/Refreshed! Try to login again!")
-          localStorage.removeItem('token')
+          
         }
         console.log("Error while api call below")
         console.log(error)

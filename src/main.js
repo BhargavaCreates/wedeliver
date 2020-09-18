@@ -13,8 +13,11 @@ require('@/store/subscriber')
 // // Optionally install the BootstrapVue icon components plugin
 // Vue.use(IconsPlugin)
 
+//set baseURL
 axios.defaults.baseURL = 'https://cors-anywhere.herokuapp.com/https://we-deliver.herokuapp.com/api/v1';
 
+// set token to headers from local storage
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}` 
 Vue.config.productionTip = false
 
 new Vue({

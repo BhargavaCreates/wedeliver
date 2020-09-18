@@ -8,9 +8,7 @@ store.subscribe((mutation) => {
         case 'auth/SET_TOKEN':
             if (mutation.payload){
                 axios.defaults.headers.common['Authorization'] = `Bearer ${mutation.payload}`
-                //` console.log(axios.defaults.headers.common['Authorization'])
-                // store token & user in local storage
-                localStorage.setItem('token',mutation.payload)
+                localStorage.setItem('token',mutation.payload) // locally storing token .. then setting axios headers token in main.js file
             } else {
                 axios.defaults.headers.common['Authorization'] = null
                 //console.log(axios.defaults.headers.common['Authorization'])
