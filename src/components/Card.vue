@@ -1,6 +1,5 @@
 <template>
   <div>
-    <a href="/order_detail">
       <section class="section">
         <div class="container">
           <!-- ... -->
@@ -12,20 +11,20 @@
                   <p class="card-header-title">
                     <a href="#">userName</a>
                   </p>
-                  <p class="card-header-title">storeName</p>
+                  <p class="card-header-title">{{ order["store_name"] }}</p>
                   <p class="card-header-subtitle" id="date">
-                    <time datetime="2016-1-1">Tue, {{date}} Jan</time>
+                    <time datetime="2016-1-1"><b>{{order["slot_time"]}}</b></time>
                   </p>
                 </header>
                 <div class="card-content">
                   <div class="content">
-                    orderID
+                    {{order}}
                     <br />
                   </div>
                 </div>
                 <footer class="card-footer">
                   <p class="card-footer-item">
-                    <b>Total: ₹475</b>
+                    <b>Total: ₹ {{ order["total_amount"] }}</b>
                   </p>
                   <p class="card-footer-item">
                     <b>userPhoneNo</b>
@@ -48,15 +47,14 @@
             </div>
           </div>
         </div>
-      </section>
-    </a>
+      </section>  
   </div>
 </template>
 
 <script>
 export default {
   name: "Card",
-  props: ["date"],
+  props: ['order'],
   methods: {
     orderStatus(event) {
       console.log(event.target.value);
@@ -72,6 +70,11 @@ export default {
 }
 .card-footer {
   display: flex;
+  margin: 0;
+  padding: 0;
+}
+.card-footer-item{
+  margin: 0;
 }
 section {
   padding: 0rem 1.5rem;
@@ -81,5 +84,15 @@ section:hover {
 }
 #order-status {
   justify-content: center;
+}
+.card-header{
+  padding:5px 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.card-header-title{
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 </style>

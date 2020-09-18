@@ -7,6 +7,9 @@
             <a href="/" style="color: black">
               <div>Order History</div>
             </a>
+            <div class="date">
+              {{ current_date }}
+            </div>
             <div>
               <button class="button" @click="logout">Log Out</button>
             </div>
@@ -17,12 +20,20 @@
   </div>
 </template>
 
+
 <script>
 import { mapGetters } from "vuex";
 import { mapActions } from "vuex";
 
+var today = new Date().toISOString().slice(0,10)
+
 export default {
   name: "Appbar",
+  data() {
+    return {
+       current_date: today
+    }
+  },
   methods: {
     logout() {
       localStorage.removeItem("token");
@@ -33,7 +44,7 @@ export default {
     ...mapActions({
       loggedOutAction: "auth/loggedOut",
       setTokenNull: "auth/setTokenNull" //action for commiting token to null
-    })
+    }),
   },
   computed: {
     ...mapGetters({
@@ -49,8 +60,8 @@ export default {
   justify-content: space-evenly;
 }
 .hero {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   block-size: 75px;
 }
 .hero-body {
@@ -62,5 +73,10 @@ export default {
 }
 h1.title.center {
   justify-content: space-between;
+}
+.date {
+  margin-top: 12.5px ;
+  font-size: medium;
+  margin-right: 90px;
 }
 </style>

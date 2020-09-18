@@ -21,12 +21,11 @@
       </nav>
     </section>
     <section class="section">
-      <Card date="26" />
-      <Card date="26" />
-      <Card date="26" />
-      <Card date="26" />
-      <Card date="26" />
-      <Card date="26" />
+      <div class="orders">
+        <div v-for="order in allOrders" v-bind:key="order['order_id']" class="order">
+                  <Card v-bind:order="order" />
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -34,12 +33,18 @@
 <script>
 import Appbar from "../Appbar";
 import Card from "../Card";
+import { mapGetters } from "vuex";
 
 export default {
   name: "OrderTom",
   components: {
     Appbar,
     Card
+  },
+  computed:{
+    ...mapGetters({
+      allOrders:'allOrders/allOrders'
+    })
   }
 };
 </script>

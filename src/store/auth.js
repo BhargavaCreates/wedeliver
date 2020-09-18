@@ -11,6 +11,7 @@ export default {
   getters: {
     authenticated(state) {
       return (state.token && state.user) != null;
+      
     },
     user(state) {
       return state.user;

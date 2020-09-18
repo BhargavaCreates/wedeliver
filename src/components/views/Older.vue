@@ -1,46 +1,43 @@
 <template>
   <div>
-    <section class="section">
-      <Appbar class="header" />
-    </section>
-    <section id="nav">
-      <nav class="tabs is-boxed is-fullwidth">
-        <div class="container">
-          <ul>
-            <li>
-              <router-link to="/">Today</router-link>
-            </li>
-            <li>
-              <router-link to="/tommorow">Tommorow</router-link>
-            </li>
-            <li class="is-active">
-              <router-link to="/older">Older</router-link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </section>
-    <section class="section">
-      <Card date="26" />
-      <Card date="26" />
-    </section>
-  </div>
+  <b-tabs content-class="mt-3">
+    <b-tab title="First" active><p>I'm the first tab</p></b-tab>
+    <b-tab title="Second"><p>I'm the second tab</p></b-tab>
+    <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
+  </b-tabs>
+</div>
 </template>
 
 <script>
-import Appbar from "../Appbar";
-import Card from "../Card";
+
+import Vue from 'vue';
+import VMdDateRangePicker from "v-md-date-range-picker";
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(VMdDateRangePicker);
+
 
 export default {
-  name: "OrderTom",
+  name: "Older",
+  date(){
+    return {
+      date_range: []
+    }
+  },
+  methods: {
+    getRange(values){
+      console.log(values)
+    }
+  },
   components: {
-    Appbar,
-    Card
+ 
   }
 };
 </script>
 
 <style scoped>
+
 .header {
   position: fixed; /* fixing the position takes it out of html flow - knows
                     nothing about where to locate itself except by browser
@@ -50,11 +47,5 @@ export default {
   width: 100vw; /* take up the full browser width */
   z-index: 100; /* high z index so other content scrolls underneath */
   height: 80px; /* define height for content */
-}
-section {
-  padding: 1.5rem 1.5rem;
-}
-#nav {
-  margin-top: 1rem;
 }
 </style>

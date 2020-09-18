@@ -7,41 +7,92 @@
       <nav class="tabs is-boxed is-fullwidth">
         <div class="container">
           <ul>
-            <li class="is-active">
-              <router-link to="/">Today</router-link>
+            <li v-bind:class="{'is-active': isActiveToday}" @click="today">
+              <a>Today</a>
             </li>
-            <li>
-              <router-link to="/tommorow">Tommorow</router-link>
-            </li>
-            <li>
-              <router-link to="/older">Older</router-link>
+             <li v-bind:class="{'is-active': isActiveTom}" @click="tom">
+              <a>Tommorow</a>
+            </li> 
+            <li v-bind:class="{'is-active': isActiveOld}" @click="old">
+              <a>Older</a>
             </li>
           </ul>
         </div>
       </nav>
     </section>
-    <section class="section">
-      <div class="orders">
-        <!-- <div v-for="order in todayOrders" :key="order.id" class="order">
-                   {{ order }}
-        </div>-->
-      </div>
-      <Card date="25" />
+    <section>
+      <component v-bind:is="component"></component>
     </section>
+    <!-- <section class="section">
+      <div class="orders">
+        <div v-for="order in allOrders" v-bind:key="order['order_id']" class="order">
+                  <Card v-bind:order="order" />
+        </div>
+      </div>
+    </section> -->
   </div>
 </template>
 
 <script>
 import Appbar from "../Appbar";
-import Card from "../Card";
+import todayOrder from '../todayOrder'
+import tomOrder from '../tomOrder'
+import oldOrder from '../oldOrder'
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+import { mapActions, mapGetters } from "vuex";
 
+Vue.use(VueAxios, axios);
 export default {
   name: "Order",
+  data(){
+    return{
+      isActiveToday: true,
+      isActiveTom: false,
+      isActiveOld: false,
+      component: 'todayOrder'
+    }
+  },
   components: {
     Appbar,
-    Card
-  }
+    'todayOrder':todayOrder,
+    'tomOrder': tomOrder,
+    'oldOrder': oldOrder
+  },
+  computed:{
+    ...mapGetters({
+      allOrders:'allOrders/allOrders'
+    })
+  },
+  methods: {
+    ...mapActions({
+      getallOrders: "allOrders/getallOrders"
+    }),
+    today(){
+      this.isActiveToday = true
+      this.isActiveTom = false
+      this.isActiveOld = false
+      this.component = todayOrder
+    },
+    tom(){
+      this.isActiveToday = false;
+      this.isActiveTom = true
+      this.isActiveOld = false
+      this.component = tomOrder
+    },
+    old(){
+      this.isActiveToday = false;
+      this.isActiveTom = false
+      this.isActiveOld = true
+      this.component = oldOrder
+    }
+  },
+  created() {
+    this.getallOrders();
+  },
 };
+
 </script>
 
 <style scoped>
