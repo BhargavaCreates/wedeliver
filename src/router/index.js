@@ -31,7 +31,6 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // const isAuthenticated = store.getters["auth/authenticated"];
   const isAuthenticated = localStorage.getItem('token');
-  console.log(isAuthenticated)
   if (to.name !== "Login" && !isAuthenticated) {
     return next({ name: "Login" });
   } else next();

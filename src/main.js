@@ -17,7 +17,10 @@ require('@/store/subscriber')
 axios.defaults.baseURL = 'https://cors-anywhere.herokuapp.com/https://we-deliver.herokuapp.com/api/v1';
 
 // set token to headers from local storage
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}` 
+if(localStorage.getItem('token') !== null){
+  axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+} 
+
 Vue.config.productionTip = false
 
 new Vue({
