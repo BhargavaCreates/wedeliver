@@ -3,7 +3,8 @@ import axios from "axios";
 export default {
   namespaced: true,
   state: {
-    allOrders: []
+    allOrders: [],
+    isLoading: true,
   },
   getters: {
       allOrders(state){
@@ -11,11 +12,17 @@ export default {
       },
       todayOrders(state){
           return state.todayOrders
+      },
+      isLoading(state){
+        return state.isLoading
       }
   },
     mutations: {
       SET_ALL_ORDERS(state, allOrders){
           state.allOrders = allOrders;
+      },
+      SET_IS_LOADING(state, isLoading){
+        state.isLoading = isLoading
       }
   },
   actions: {
@@ -31,7 +38,9 @@ export default {
           },
         });
         commit("SET_ALL_ORDERS",response.data.orders);
-        console.log("Yoo! Got all the Orders for you")
+        commit("SET_IS_LOADING",false);
+        console.log("Yoo! Got all the Orders for you");
+
       }
       catch(error){
         if(error.response.status == 401){
@@ -39,7 +48,7 @@ export default {
           localStorage.removeItem('token')
         }
         console.log("Error while api call below")
-        console.log(error)
+        commit("SET_IS_LOADING",false);
       }
       
     },

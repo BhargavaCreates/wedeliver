@@ -20,9 +20,13 @@
         </div>
       </nav>
     </section>
+    <!-- <section>
+      <Spinner></Spinner>
+    </section> -->
     <section>
       <component v-bind:is="component"></component>
     </section>
+
     <!-- <section class="section">
       <div class="orders">
         <div v-for="order in allOrders" v-bind:key="order['order_id']" class="order">
@@ -42,27 +46,30 @@ import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { mapActions, mapGetters } from "vuex";
+import Spinner from '../Spinner'
 
 Vue.use(VueAxios, axios);
 export default {
   name: "Order",
   data(){
     return{
-      isActiveToday: true,
+      isActiveToday: true,  // to maintain is-active class on nav bar
       isActiveTom: false,
       isActiveOld: false,
-      component: 'todayOrder'
+      component: 'Spinner'
     }
   },
   components: {
     Appbar,
     'todayOrder':todayOrder,
     'tomOrder': tomOrder,
-    'oldOrder': oldOrder
+    'oldOrder': oldOrder,
+    'Spinner' : Spinner
   },
   computed:{
     ...mapGetters({
-      allOrders:'allOrders/allOrders'
+      allOrders:'allOrders/allOrders',
+      isLoading:'allOrders/isLoading'
     })
   },
   methods: {
@@ -70,7 +77,7 @@ export default {
       getallOrders: "allOrders/getallOrders"
     }),
     today(){
-      this.isActiveToday = true
+      this.isActiveToday = true // to maintain is-active class on nav bar
       this.isActiveTom = false
       this.isActiveOld = false
       this.component = todayOrder
@@ -79,7 +86,7 @@ export default {
       this.isActiveToday = false;
       this.isActiveTom = true
       this.isActiveOld = false
-      this.component = tomOrder
+      this.component = tomOrder // sets componet to tomOrder 
     },
     old(){
       this.isActiveToday = false;
@@ -91,6 +98,13 @@ export default {
   created() {
     this.getallOrders();
   },
+  watch:{
+    allOrders: function(){
+      console.log(this.component)
+      this.component = 'todayOrder';
+      console.log(this.component)
+    }
+  }
 };
 
 </script>
