@@ -20,20 +20,9 @@
         </div>
       </nav>
     </section>
-    <!-- <section>
-      <Spinner></Spinner>
-    </section> -->
     <section>
       <component v-bind:is="component"></component>
     </section>
-
-    <!-- <section class="section">
-      <div class="orders">
-        <div v-for="order in allOrders" v-bind:key="order['order_id']" class="order">
-                  <Card v-bind:order="order" />
-        </div>
-      </div>
-    </section> -->
   </div>
 </template>
 
@@ -42,11 +31,11 @@ import Appbar from "../Appbar";
 import todayOrder from '../todayOrder'
 import tomOrder from '../tomOrder'
 import oldOrder from '../oldOrder'
+import Spinner from '../Spinner.vue'
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { mapActions, mapGetters } from "vuex";
-import Spinner from '../Spinner'
 
 Vue.use(VueAxios, axios);
 export default {
