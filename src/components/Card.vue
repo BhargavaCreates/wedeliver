@@ -73,9 +73,7 @@ export default {
   margin: 0;
   padding: 0;
 }
-.card-footer-item{
-  margin: 0;
-}
+
 section {
   padding: 0rem 1.5rem;
 }
