@@ -10,7 +10,7 @@
             <div class="date">
               {{ current_date }}
             </div>
-            <div>
+            <div v-if="authenticated || token">
               <button class="button" @click="logout">Log Out</button>
             </div>
           </h1>
@@ -31,7 +31,8 @@ export default {
   name: "Appbar",
   data() {
     return {
-       current_date: today
+       current_date: today,
+       token: localStorage.getItem('token')
     }
   },
   methods: {
@@ -48,7 +49,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      loggedOut: "auth/loggedOut"
+      loggedOut: "auth/loggedOut",
+      authenticated: "auth/authenticated"
     })
   }
 };
@@ -78,5 +80,10 @@ h1.title.center {
   margin-top: 12.5px ;
   font-size: medium;
   margin-right: 90px;
+}
+@media(max-width: 700px){
+  .date{
+    display: none;
+  }
 }
 </style>

@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Order from "../components/views/Order.vue";
 import Login from "../components/views/Login.vue";
+import OrderDetail from '../components/views/OrderDetail.vue'
 import PageNotFound from "../components/views/PageNotFound.vue";
 //import store from "@/store";
 
@@ -19,6 +20,11 @@ const router = new Router({
       path: "/login",
       name: "Login",
       component: Login,
+    },
+    {
+      path:'/order_detail/:order_id',
+      name: 'orderDetail',
+      component: OrderDetail
     },
     {
       path: "/*",

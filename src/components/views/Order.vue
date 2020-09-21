@@ -1,8 +1,5 @@
 <template>
   <div>
-    <section class="section">
-      <Appbar class="header" />
-    </section>
     <section id="nav">
       <nav class="tabs is-boxed is-fullwidth">
         <div class="container">
@@ -27,7 +24,6 @@
 </template>
 
 <script>
-import Appbar from "../Appbar";
 import todayOrder from '../todayOrder'
 import tomOrder from '../tomOrder'
 import oldOrder from '../oldOrder'
@@ -49,7 +45,6 @@ export default {
     }
   },
   components: {
-    Appbar,
     'todayOrder':todayOrder,
     'tomOrder': tomOrder,
     'oldOrder': oldOrder,
@@ -111,8 +106,5 @@ export default {
 }
 section {
   padding: 1rem 1.5rem;
-}
-#nav {
-  margin-top: 2.5rem;
 }
 </style>
